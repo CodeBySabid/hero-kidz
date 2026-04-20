@@ -1,4 +1,3 @@
-
 const { MongoClient, ServerApiVersion } = require('mongodb');
 const uri = process.env.MONGODB_URI;
 const dbName = process.env.DB_NAME;
@@ -16,7 +15,6 @@ const client = new MongoClient(uri, {
     deprecationErrors: true,
   }
 });
-
 
 export const dbConnect = ({cName}) => {
     return client.db(dbName).collection(cName)
