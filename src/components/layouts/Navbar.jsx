@@ -8,8 +8,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import useNavbar from "./useNavbar";
 import { FaShoppingCart } from "react-icons/fa";
 import { IoMoonSharp, IoSunny } from "react-icons/io5";
+import Link from "next/link";
 
-const navItems = ["Home", "Services", "About", "Contact"];
 
 const menuVariants = {
     hidden: { opacity: 0, y: -20 },
@@ -46,37 +46,36 @@ const Navbar = () => {
     }, [])
 
     return (
-        <div className="sticky top-0 z-50 backdrop-blur-md bg-white/10 border-b border-white/20">
+        <div className="fixed w-full shadow-sm z-50 backdrop-blur-md bg-orange-500/40 border-b border-white/20">
 
             {/* Desktop */}
-            <div className="hidden lg:flex justify-between items-center px-6 py-3">
+            <div className="hidden lg:flex justify-between items-center px-6 py-1">
                 <Logo />
 
                 <div className="flex gap-6">
-                    {navItems.map((item, i) => (
-                        <a key={i} href="#" className="hover:text-cyan-300 transition">
-                            {item}
-                        </a>
-                    ))}
+                    <Link href='/'>Home</Link>
+                    <Link href='/service'>Service</Link>
+                    <Link href='/about'>About</Link>
+                    <Link href='/blog'>blog</Link>
+                    <Link href='/contact'>Contact</Link>
                 </div>
-                <div>
+                <div className="flex items-center gap-3">
                     <button onClick={handleTheme}>
                         {theme === "dark" ? <IoSunny size={22} /> : <IoMoonSharp size={22} />}
                     </button>
                     <button
-                        onClick={closeMenu}
-                        className="px-4 py-1.5 rounded-full bg-cyan-400 text-black"
+                        className="px-4 py-1.5 rounded-full bg-cyan-400 text-black cursor-pointer"
                     >
                         <FaShoppingCart />
                     </button>
-                    <button className="px-4 py-1.5 rounded-full bg-white/20">
+                    <button className="px-4 py-1 rounded-full bg-blue-600/80 cursor-pointer text-white">
                         Login
                     </button>
                 </div>
             </div>
 
             {/* Mobile Header */}
-            <div className="lg:hidden flex justify-between items-center px-4 py-3">
+            <div className="lg:hidden flex justify-between items-center px-4 py-1">
                 <Logo />
                 <button onClick={toggleMenu}>
                     {openMenu ? <FiX size={28} /> : <IoIosMenu size={28} />}
@@ -96,31 +95,50 @@ const Navbar = () => {
             backdrop-blur-xl bg-black/50 border-b border-white/20
             flex flex-col items-center py-5 gap-4"
                     >
-                        {navItems.map((item, i) => (
-                            <motion.a
-                                key={i}
-                                href="#"
-                                onClick={closeMenu}
-                                variants={itemVariants}
-                                className="text-lg hover:text-cyan-300 transition"
-                            >
-                                {item}
-                            </motion.a>
-                        ))}
+                        <motion.div
+                            variants={itemVariants}
+                            className="text-lg hover:text-cyan-300 hover:bg-blue-600/30 hover:px-6 hover:rounded-2xl transition"
+                        >
+                            <Link onClick={closeMenu} href='/'>Home</Link>
+                        </motion.div>
+                        <motion.div
+                            variants={itemVariants}
+                            className="text-lg hover:text-cyan-300 hover:bg-blue-600/30 hover:px-6 hover:rounded-2xl transition"
+                        >
+                            <Link onClick={closeMenu} href='/service'>Service</Link>
+                        </motion.div>
+                        <motion.div
+                            variants={itemVariants}
+                            className="text-lg hover:text-cyan-300 hover:bg-blue-600/30 hover:px-6 hover:rounded-2xl transition"
+                        >
+                            <Link onClick={closeMenu} href='/about'>About</Link>
+                        </motion.div>
+                        <motion.div
+                            variants={itemVariants}
+                            className="text-lg hover:text-cyan-300 hover:bg-blue-600/30 hover:px-6 hover:rounded-2xl transition"
+                        >
+                            <Link onClick={closeMenu} href='/blog'>blog</Link>
+                        </motion.div>
+                        <motion.div
+                            variants={itemVariants}
+                            className="text-lg hover:text-cyan-300 hover:bg-blue-600/30 hover:px-6 hover:rounded-2xl transition"
+                        >
+                            <Link onClick={closeMenu} href='/contact'>Contact</Link>
+                        </motion.div>
 
                         <motion.div variants={itemVariants} className="flex gap-4 mt-2">
-                            <button onClick={handleTheme}>
+                            <button onClick={handleTheme} className="cursor-pointer">
                                 {theme === "dark" ? <IoSunny size={22} /> : <IoMoonSharp size={22} />}
                             </button>
                             <button
                                 onClick={closeMenu}
-                                className="px-4 py-1.5 rounded-full bg-cyan-400 text-black"
+                                className="px-6 rounded-full bg-cyan-400 text-black cursor-pointer"
                             >
-                                Sign Up
+                                <FaShoppingCart />
                             </button>
                             <button
                                 onClick={closeMenu}
-                                className="px-4 py-1.5 rounded-full bg-white/20"
+                                className="px-4 py-1 rounded-full bg-blue-600/80 cursor-pointer text-white"
                             >
                                 Login
                             </button>

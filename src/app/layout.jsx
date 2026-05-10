@@ -19,7 +19,7 @@ export default function RootLayout({ children }) {
       suppressHydrationWarning
     >
       <body className={`${poppins.className} h-full antialiased min-h-full flex flex-col`}>
-        <header>
+        <header className="h-[49.41px]">
           <Navbar></Navbar>
         </header>
         <main className="md:w-11/12 min-h-screen mx-auto">
