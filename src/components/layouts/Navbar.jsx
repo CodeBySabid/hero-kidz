@@ -55,6 +55,7 @@ const Navbar = () => {
                 <div className="flex gap-6">
                     <Link href='/'>Home</Link>
                     <Link href='/service'>Service</Link>
+                    <Link href='/products'>Products</Link>
                     <Link href='/about'>About</Link>
                     <Link href='/blog'>blog</Link>
                     <Link href='/contact'>Contact</Link>
@@ -106,6 +107,12 @@ const Navbar = () => {
                             className="text-lg hover:text-cyan-300 hover:bg-blue-600/30 hover:px-6 hover:rounded-2xl transition"
                         >
                             <Link onClick={closeMenu} href='/service'>Service</Link>
+                        </motion.div>
+                        <motion.div
+                            variants={itemVariants}
+                            className="text-lg hover:text-cyan-300 hover:bg-blue-600/30 hover:px-6 hover:rounded-2xl transition"
+                        >
+                            <Link href='/products'>Products</Link>
                         </motion.div>
                         <motion.div
                             variants={itemVariants}
